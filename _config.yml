@@ -76,7 +76,7 @@ theme_mode: # [light | dark]
 img_cdn: 'https://rp365854.blob.core.windows.net/images'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /mountains.jpg
+avatar: /pfp.jpg
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
