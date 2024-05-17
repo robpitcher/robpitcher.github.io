@@ -16,7 +16,7 @@ The following steps describe how to add a new Windows Server Core VM as an addit
 ### Prep data disk for OS (If you're installing ADDS on a separate disk)
 2. Console into the server core VM and choose option 15 to enter command line.
 3. Run DISKPART commands. Be sure to change "X" in the lines below as needed for your environment
-```
+```console
 diskpart
 list disk
 select disk X
@@ -42,11 +42,13 @@ Install-WindowsFeature -Name "AD-Domain-Services"
 ```
 
 ### Promote the server to a domain controller
+> Update the parameter values below for your environment
+{: .prompt-warning }
 6. Specify the account credentials with permissions to perform domain controller promotion
 ```powershell
 $credential = (Get-Credential "CORP\azureadmin")
 ```
-7. Run the DC promotion command. Be sure to update the parameter values for your environment
+7. Run the DC promotion command.
 ```powershell
 Install-ADDSDomainController -Credential $credential -DomainName "corp.robpitcher.com" -InstallDns -DatabasePath "F:\Windows\NTDS" -LogPath "F:\Windows\NTDS" -SysvolPath "F:\Windows\SYSVOL" -SiteName "Default-First-Site-Name"
 ```
