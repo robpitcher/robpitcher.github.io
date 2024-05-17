@@ -1,11 +1,10 @@
 ---
 title: Windows Server Core Domain Controllers
-date: '2024-03-22 11:46:00 -0400'
+date: '2024-05-17 11:46:00 -0400'
 categories: [WindowsServer]
 tags: [core, server, windows, domain controllers]     # TAG names should always be lowercase
 ---
 
-# Windows Server Core Edition: Additional domain controllers
 The following steps describe how to add a new Windows Server Core VM as an additional domain controller to an existing domain. This tutorial used Windows Server Core 2022 with an existing domain running on Windows Server 2016 Forest and Domain functional levels.
 
 ## Requirements
@@ -19,7 +18,7 @@ The following steps describe how to add a new Windows Server Core VM as an addit
 ### Prep data disk for OS (If you're installing ADDS on a separate disk)
 2. Console into the server core VM and choose option 15 to enter command line.
 3. Run DISKPART commands. Be sure to change "X" in the lines below as needed for your environment
-```command
+```
 diskpart
 list disk
 select disk X
