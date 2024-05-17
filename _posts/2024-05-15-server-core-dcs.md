@@ -34,7 +34,7 @@ exit
 
 ### Install Windows Features
 4. Switch to powershell
-```command
+```
 powershell
 ```
 
@@ -44,8 +44,11 @@ Install-WindowsFeature -Name "AD-Domain-Services"
 ```
 
 ### Promote the server to a domain controller
-6. Run the DC promotion command. Be sure to update the parameter values for your environment
+6. Specify the account credentials with permissions to perform domain controller promotion
 ```powershell
 $credential = (Get-Credential "CORP\azureadmin")
+```
+7. Run the DC promotion command. Be sure to update the parameter values for your environment
+```powershell
 Install-ADDSDomainController -Credential $credential -DomainName "corp.robpitcher.com" -InstallDns -DatabasePath "F:\Windows\NTDS" -LogPath "F:\Windows\NTDS" -SysvolPath "F:\Windows\SYSVOL" -SiteName "Default-First-Site-Name"
 ```
