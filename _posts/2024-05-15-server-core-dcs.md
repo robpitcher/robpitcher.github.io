@@ -32,7 +32,7 @@ exit
 
 ### Install Windows Features
 4. Switch to powershell
-```shell
+```console
 powershell
 ```
 
