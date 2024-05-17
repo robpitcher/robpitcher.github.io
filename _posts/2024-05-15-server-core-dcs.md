@@ -7,13 +7,11 @@ tags: [core, server, windows, domain controllers]     # TAG names should always 
 
 The following steps describe how to add a new Windows Server Core VM as an additional domain controller to an existing domain. This tutorial used Windows Server Core 2022 with an existing domain running on Windows Server 2016 Forest and Domain functional levels.
 
-## Requirements
+### Requirements
 - The server core VM must have line of sight / connectivity to an existing domain controller
 - Console / remote connectivity to the server core VM
 - A domain account with permission to promote the new server to a domain controller
-
-### Configure DNS
-1. Ensure the NIC DNS configuration for the server core VM is pointing to existing domain controller(s).
+- Ensure the NIC DNS configuration for the server core VM is pointing to existing domain controller(s).
 
 ### Prep data disk for OS (If you're installing ADDS on a separate disk)
 2. Console into the server core VM and choose option 15 to enter command line.
@@ -34,7 +32,7 @@ exit
 
 ### Install Windows Features
 4. Switch to powershell
-```
+```shell
 powershell
 ```
 
