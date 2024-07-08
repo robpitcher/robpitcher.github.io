@@ -11,5 +11,10 @@ In this article we're going to cover the steps to integrate a custom DNS solutio
 
 In this example we have the following components in our environment:
 - Active Directory domain controllers deployed on-prem and in Azure
+- Azure VNET DNS settings configured to point to the Azure domain controllers
 - Hybrid network connectivity established between Azure and on-prem using a site-to-site VPN
 - A storage account with a private endpoint enabled
+
+> This example uses a storage account private endpoint for demonstration purposes. The same general steps can be applied to any resource that supports private endpoints, just be sure to use the appropriate private DNS zone name as documented [here](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns#commercial).
+{: .prompt-tip }
+
