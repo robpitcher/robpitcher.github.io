@@ -8,6 +8,7 @@ tags:
 - azure
 - active directory
 - domain controllers
+date: 2024-07-08 23:51 -0400
 ---
 In this article we're going to cover the steps to integrate a custom DNS solution for private endpoint name resolution in a hybrid Azure environment. Microsoft has documentation for [private endpoint DNS integration](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns-integration), but the hybrid examples on Microsoft Learn all use Azure Private Resolver for the Azure side of the integration. Azure Private Resolver is great, but it can be redundant and result in extra unnecessary costs if you've already extended (or plan to extend) your on-prem domain controllers into Azure.
 
