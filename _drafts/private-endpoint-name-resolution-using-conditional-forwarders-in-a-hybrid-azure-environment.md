@@ -2,15 +2,19 @@
 layout: post
 title: 'Private Endpoint Name Resolution: Using Conditional Forwarders in a Hybrid
   Azure Environment'
-date: 2024-07-08 12:37 -0400
-categories: [Azure]
-tags: [azure, active directory, domain controllers]     # TAG names should always be lowercase
+categories:
+- Azure
+tags:
+- azure
+- active directory
+- domain controllers
 ---
-
 In this article we're going to cover the steps to integrate a custom DNS solution for private endpoint name resolution in a hybrid Azure environment. Microsoft has documentation for [private endpoint DNS integration](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns-integration), but the hybrid examples on Microsoft Learn all use Azure Private Resolver for the Azure side of the integration. Azure Private Resolver is great, but it can be redundant and result in extra unnecessary costs if you've already extended (or plan to extend) your on-prem domain controllers into Azure.
 
 ## What are private endpoints and what problem are we solving here?
-Azure private endpoints provide a way for you to connect to your Azure PaaS resources over a private network. If you're not using a custom domain or your Azure resource doesn't support custom domains, you'll need a way to properly resolve the FQDN of the resource to the new private IP (the private endpoint). The best way to do this is by using an Azure private DNS zone. However, the private DNS zone alone won't solve your issue if you're using a custom DNS solution. The content below describes the extra steps required to get everything resolving the way it should. The configuration below also serves as a simple split-brain DNS setup so that internal users hit the private endpoint and external users hit the public endpoint all while using the same FQDN.
+Azure private endpoints provide a way for you to connect to your Azure PaaS resources over a private network. If you're not using a custom domain or your Azure resource doesn't support custom domains, you'll need a way to properly resolve the FQDN of the resource to the new private IP (the private endpoint).
+
+The best way to do this is by using an Azure private DNS zone. However, the private DNS zone alone won't solve your issue if you're using a custom DNS solution. The content below describes the extra steps required to get everything resolving the way it should. The configuration below also serves as a simple split-brain DNS setup so that internal users hit the private endpoint and external users hit the public endpoint all while using the same FQDN.
 
 > Disable the public endpoint on the resource unless you require it to be accessible from the internet.
 {: .prompt-tip }
