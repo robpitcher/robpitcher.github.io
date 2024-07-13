@@ -37,7 +37,9 @@ Azure will create the private DNS zone for you by default when creating a privat
 1. Logon to the Azure domain controller and launch DNS manager
 2. Right click on conditional forwarders and click create new conditional forwarder.
 3. Create the conditional forwarder like shown below. The DNS domain name will be specific to the Azure resource type for which you are configuring a conditional forwarder. In this case, we're creating a forwarder for the file service of an Azure storage account. Enter the [Azure DNS VIP](https://learn.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16) `168.63.129.16` as the master server:
+
 ![Azure conditional forwarder](custom/azure-dc-forwarder.png){: width="788" height="550" }
+
 > Be sure to uncheck the box that says "Store this conditional forwarder in Active Directory, and replicate it as follows:"
 {: .prompt-tip }
 
@@ -45,9 +47,12 @@ Azure will create the private DNS zone for you by default when creating a privat
 1. Logon to the on-prem domain controller and launch DNS manager.
 2. Right click on conditional forwarders and click create new conditional forwarder.
 3. Create the conditional forwarder like shown below. The DNS domain name will be specific to the Azure resource type for which you are configuring a conditional forwarder. In this case, we're creating a forwarder for the file service of an Azure storage account. Enter the the IPs of your Azure-based domain controllers. The IP of the Azure-based domain controller in our example is `10.0.0.4`:
+
 > The Azure DNS VIP will not respond to queries outside of an Azure VNET, so the on-prem domain controllers must forward their requests for this domain to the Azure-based domain controllers.
 {: .prompt-info }
+
 ![On-prem conditional forwarder](custom/on-prem-dc-forwarder.png){: width="801" height="557" }
+
 > Be sure to uncheck the box that says "Store this conditional forwarder in Active Directory, and replicate it as follows:"
 {: .prompt-tip }
 
